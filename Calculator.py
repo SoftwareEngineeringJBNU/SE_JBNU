@@ -1,7 +1,7 @@
 import EasterEgg
 
 class Calculator():
-    operator_dic = {"+" : "plus", "-" : "minus", "*" : "multiply"}
+    operator_dic = {"+" : "plus", "-" : "minus", "*" : "multiply"} #연산자 Dictionary
 
     selected_operator = None #선택된 연산자종류
 
