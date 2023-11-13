@@ -34,12 +34,25 @@ class Calculator():
 
     def errorCheck(self):
         if self.selected_operator is None:
-            self.result = self.current_input # 처음 숫자가 입력될 때, result를 현재 값으로 바꿔준다.
-
+            self.result = self.current_input # 처음 숫자가 입력될 때, result을 current_input 바꿔준다.
 
         # TODO : 해당 로직 내에서, 에러가 발생했다면, error_state를 True로 설정하여라.
 
-        # TODO : prev_input이 숫자라면, current_input은 연산자여야 함. 또한, prev_input이 연산자라면 current_input은 숫자여야 함.
+        if isinstance(self.prev_input, int): # prev_input이 정수인데
+            if not self.current_input in self.operator_dic: # current_input이 연산자가 아닐 경우
+                self.error_state = True
+            else : # current_input이 연산자일 때..
+                if self.selected_operator is not None and self.current_input != self.selected_operator:
+                    # None이 아닐 때, 현재 연산자와 이전 연산자가 다르다면 에러.
+                    self.error_state = True
+
+        elif self.prev_input in self.operator_dic: # prev_input이 연산자인데
+            if not isinstance(self.current_input, int) : # current_input이 정수가 아니라면
+                self.error_state = True
+        else: # prev_input이 정수도, 연산자도 아닌 경우
+            self.error_state = True
+
+        # TODO : prev_input이 정수라면, current_input은 연산자여야 함. 또한, prev_input이 연산자라면 current_input은 정수여야 함.
         # TODO : current_input이 숫자라면, 반드시 정수여야 함.
         # TODO : current_input이 연산자라면, selected_operator가 None이거나(초기 상태) selected_operator와 같아야 함.
 
@@ -52,6 +65,10 @@ class Calculator():
     def calculate_Start(self):
         while True:
             self.current_input = input()
+
+            if self.current_input == EasterEgg.EASTEREGG_TRIGGER: # 이스터에그의 값일 시, 이스터에그 수행.
+                EasterEgg.easterEgg() # 수행될 이스터에그
+
             self.errorCheck() # 에러체크
             self.prev_input = self.current_input # errorCheck를 위한 prev_input 계승
 
@@ -59,8 +76,6 @@ class Calculator():
                     print(self.result) # 결과 값 출력 후 종료
                     return
 
-            if self.current_input == EasterEgg.EASTEREGG_TRIGGER: # 이스터에그의 값일 시, 이스터에그 수행.
-                EasterEgg.easterEgg() # 수행될 이스터에그
             elif self.current_input not in self.operator_dic: # 숫자 입력시
                 self.calculate()
             else: # 연산자 입력시
