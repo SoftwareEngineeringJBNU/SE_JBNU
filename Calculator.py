@@ -4,7 +4,6 @@ class Calculator():
     operator_dic = {"+" : "plus", "-" : "minus", "*" : "multiply"} #연산자 Dictionary
 
     selected_operator = None #선택된 연산자종류
-
     prev_input = None #이전값
     current_input = None #현재값
     result = None #연산의 결과값
@@ -34,6 +33,10 @@ class Calculator():
 
 
     def errorCheck(self):
+        if self.selected_operator is None:
+            self.result = self.current_input # 처음 숫자가 입력될 때, result를 현재 값으로 바꿔준다.
+
+
         # TODO : 해당 로직 내에서, 에러가 발생했다면, error_state를 True로 설정하여라.
 
         # TODO : prev_input이 숫자라면, current_input은 연산자여야 함. 또한, prev_input이 연산자라면 current_input은 숫자여야 함.
@@ -44,7 +47,7 @@ class Calculator():
 
         if self.error_state:
             print("ERROR!")
-            return
+            exit(0)
 
     def calculate_Start(self):
         while True:
@@ -53,10 +56,9 @@ class Calculator():
             self.prev_input = self.current_input # errorCheck를 위한 prev_input 계승
 
             if self.current_input == "=":
-                if self.result != 0:
-                    print(self.result)
-                else:
-                    print(self.prev_input)
+                    print(self.result) # 결과 값 출력 후 종료
+                    return
+
             if self.current_input == EasterEgg.EASTEREGG_TRIGGER: # 이스터에그의 값일 시, 이스터에그 수행.
                 EasterEgg.easterEgg() # 수행될 이스터에그
             elif self.current_input not in self.operator_dic: # 숫자 입력시
