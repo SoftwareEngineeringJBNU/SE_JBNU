@@ -45,7 +45,6 @@ class Calculator():
                 self.printError()
 
 
-
     def errorCheck(self):
         # TODO : 해당 로직 내에서, 에러가 발생했다면, error_state를 True로 설정하여라.
 
