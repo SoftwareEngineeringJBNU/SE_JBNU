@@ -93,10 +93,14 @@ def easterEgg_Chirstmas():
 
 # 새해 이스터애그
 
+def NewYear_calculator():
+    current_datetime = datetime.now()
+    return (current_datetime + timedelta(days=365)).strftime("%Y") # 문자열로 return
+
 def easterEgg_NewYear():
     current_datetime = datetime.now()
 
-    EASTEREGG_TRIGGER_NEWYEAR = (current_datetime + timedelta(days=365)).strftime("%Y")
+    EASTEREGG_TRIGGER_NEWYEAR = NewYear_calculator()
 
     newyear_datetime = datetime(int(EASTEREGG_TRIGGER_NEWYEAR), 1, 1)
 
