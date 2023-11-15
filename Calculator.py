@@ -19,7 +19,11 @@ class Calculator():
 
     # TODO : result와 이전 값의 연산
     def addNumber(self):
-        pass
+       if self.current_input.isdigit(): 
+        self.result += int(self.current_input)
+    else:
+        exit(0)
+        
     def subtractNumber(self):
         pass
     def multiplyNumber(self):
@@ -29,7 +33,17 @@ class Calculator():
         # TODO : 현재값이 존재해야만 아래의 계산이 수행되어야 함. 조건문으로 처리 해줄 것.
         # TODO : 조건문에서 현재 연산자와 +, -, * 비교 후, 각 조건문에서 함수 처리.
         # TODO : 연산값을 결과 값에 넣어주어야 함.
-        pass
+      if self.result != 0 and self.current_input is not None:
+        if self.selected_operator == "+":
+            self.result += int(self.current_input)
+            
+        elif self.selected_operator == "-":
+            self.result -= int(self.current_input)
+            
+        elif self.selected_operator == "*":
+            self.result *= int(self.current_input)
+            
+        self.current_input = None
 
 
     def errorCheck(self):
