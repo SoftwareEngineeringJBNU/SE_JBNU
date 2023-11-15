@@ -17,33 +17,35 @@ class Calculator():
         self.prev_input = self.operator_dic["plus"] # 초기 current_input과의 충돌을 방지하기 위한 초기화 값. 의미 없는 값이므로 혼동하지 말 것.
         pass
 
+    def printError(self):
+        print("ERROR!")
+        exit(0)
+
     # TODO : result와 이전 값의 연산
     def addNumber(self):
-       if self.current_input.isdigit(): 
         self.result += int(self.current_input)
-    else:
-        exit(0)
         
     def subtractNumber(self):
+        self.result -= int(self.current_input)
         pass
     def multiplyNumber(self):
+        self.result *= int(self.current_input)
         pass
 
     def calculate(self):
         # TODO : 현재값이 존재해야만 아래의 계산이 수행되어야 함. 조건문으로 처리 해줄 것.
         # TODO : 조건문에서 현재 연산자와 +, -, * 비교 후, 각 조건문에서 함수 처리.
         # TODO : 연산값을 결과 값에 넣어주어야 함.
-      if self.result != 0 and self.current_input is not None:
-        if self.selected_operator == "+":
-            self.result += int(self.current_input)
-            
-        elif self.selected_operator == "-":
-            self.result -= int(self.current_input)
-            
-        elif self.selected_operator == "*":
-            self.result *= int(self.current_input)
-            
-        self.current_input = None
+      if self.current_input is not None:
+        if self.selected_operator == self.operator_dic["plus"]:
+            self.addNumber()
+        elif self.selected_operator == self.operator_dic["minus"]:
+            self.subtractNumber()
+        elif self.selected_operator == self.operator_dic["multiply"]:
+            self.multiplyNumber()
+        else:
+            self.printError()
+
 
 
     def errorCheck(self):
@@ -73,9 +75,7 @@ class Calculator():
         # TODO : edge케이스가 있다면 추가작성요망.
 
         if self.error_state:
-            print("ERROR!")
-            exit(0)
-
+            self.printError()
     def calculate_Start(self):
         while True:
             self.current_input = input()
