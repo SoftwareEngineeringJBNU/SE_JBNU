@@ -50,9 +50,6 @@ class Calculator():
 
 
     def errorCheck(self):
-        if self.selected_operator is None:
-            self.result = self.current_input # 처음 숫자가 입력될 때, result을 current_input 바꿔준다.
-
         # TODO : 해당 로직 내에서, 에러가 발생했다면, error_state를 True로 설정하여라.
 
         # TODO : prev_input이 정수라면, current_input은 연산자여야 함. 또한, prev_input이 연산자라면 current_input은 정수여야 함.
@@ -74,6 +71,8 @@ class Calculator():
             if float(self.current_input).is_integer(): # prev_input이 정수인데
                 if self.prev_input in self.operator_dic: # current_input이 연산자가 아닐 경우
                     self.error_state = True
+                if self.selected_operator is None:
+                    self.result = int(self.current_input)  # 처음 숫자가 입력될 때, result을 current_input 바꿔준다.
             else: # prev_input이 정수도, 연산자도 아닌 경우
                 self.error_state = True
         
@@ -100,7 +99,7 @@ class Calculator():
             self.errorCheck() # 에러체크
             self.prev_input = self.current_input # errorCheck를 위한 prev_input 계승
 
-            if self.current_input not in self.operator_dic: # 숫자 입력시
+            if self.current_input not in self.operator_dic.values(): # 숫자 입력시
                 self.calculate()
             else: # 연산자 입력시
                 self.selected_operator = self.current_input
