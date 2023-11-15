@@ -59,7 +59,7 @@ class Calculator():
         try:
             float(self.current_input) #현재 입력이 숫자인지 확인
         except ValueError: #입력된 문자열이 숫자로 형변환이 불가능한 경우(문자일 경우)
-            if self.prev_input in self.operator_dic: # prev_input이 연산자인데
+            if self.current_input in self.operator_dic: # current_input이 연산자인데
                 if not float(self.prev_input).is_integer() : # prev_input이 정수가 아니라면
                     self.error_state = True
 
