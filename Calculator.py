@@ -46,7 +46,6 @@ class Calculator():
 
     def errorCheck(self):
         # TODO : 해당 로직 내에서, 에러가 발생했다면, error_state를 True로 설정하여라.
-
         # TODO : prev_input이 정수라면, current_input은 연산자여야 함. 또한, prev_input이 연산자라면 current_input은 정수여야 함.
         try:
             float(self.current_input) #현재 입력이 숫자인지 확인
