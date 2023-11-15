@@ -79,9 +79,6 @@ jingle_bells = [
 
 def easterEgg_Chirstmas():
     height = 10
-    for note, duration in jingle_bells:
-        winsound.Beep(int(notes[note]), duration)
-        time.sleep(duration/1000)
 
     for i in range(1, height + 1):
         space = height - i
@@ -90,9 +87,11 @@ def easterEgg_Chirstmas():
     bridge = height - 2
     print(" " * bridge + "|||")
 
+    for note, duration in jingle_bells:
+        winsound.Beep(int(notes[note]), duration)
+        time.sleep(duration/1000)
 
 # 새해 이스터애그
-
 def NewYear_calculator():
     current_datetime = datetime.now()
     return (current_datetime + timedelta(days=365)).strftime("%Y") # 문자열로 return
