@@ -77,7 +77,7 @@ jingle_bells = [
 ]
 
 
-def easterEgg_chirstmas():
+def easterEgg_Chirstmas():
     height = 10
     for note, duration in jingle_bells:
         winsound.Beep(int(notes[note]), duration)
@@ -93,7 +93,7 @@ def easterEgg_chirstmas():
 
 # 새해 이스터애그
 
-def easterEgg_newYear():
+def easterEgg_NewYear():
     current_datetime = datetime.now()
 
     EASTEREGG_TRIGGER_NEWYEAR = (current_datetime + timedelta(days=365)).strftime("%Y")
@@ -103,5 +103,3 @@ def easterEgg_newYear():
     remaining_time = newyear_datetime - current_datetime
 
     print(f"remaining days until 2024 : D-{remaining_time.days + 1}")
-
-easterEgg_newYear()
