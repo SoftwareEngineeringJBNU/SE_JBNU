@@ -34,18 +34,18 @@ class Calculator():
         pass
 
     def calculate(self):
-        # TODO : 현재값이 존재해야만 아래의 계산이 수행되어야 함. 조건문으로 처리 해줄 것.
+        # TODO : 입력된 연산자가 존재해야만 아래의 계산이 수행되어야 함. 조건문으로 처리 해줄 것.
         # TODO : 조건문에서 현재 연산자와 +, -, * 비교 후, 각 조건문에서 함수 처리.
         # TODO : 연산값을 결과 값에 넣어주어야 함.
-      if self.current_input is not None:
-        if self.selected_operator == self.operator_dic["plus"]:
-            self.addNumber()
-        elif self.selected_operator == self.operator_dic["minus"]:
-            self.subtractNumber()
-        elif self.selected_operator == self.operator_dic["multiply"]:
-            self.multiplyNumber()
-        else:
-            self.printError()
+        if self.selected_operator is not None :
+            if self.selected_operator == self.operator_dic["plus"]:
+                self.addNumber()
+            elif self.selected_operator == self.operator_dic["minus"]:
+                self.subtractNumber()
+            elif self.selected_operator == self.operator_dic["multiply"]:
+                self.multiplyNumber()
+            else:
+                self.printError()
 
 
 
@@ -86,7 +86,7 @@ class Calculator():
             self.current_input = input()
 
             if self.current_input == EasterEgg.EASTEREGG_TRIGGER_CHRISTMAS:  # 크리스마스 이스터에그의 값일 시, 크리스마스이스터에그 수행.
-                EasterEgg.easterEgg()  # EasterEgg.py의 크리스마스 이스터에그함수 실행
+                EasterEgg.easterEgg_Chirstmas()  # EasterEgg.py의 크리스마스 이스터에그함수 실행
                 return
 
             if self.current_input == EasterEgg.NewYear_calculator():  # 새해 이스터에그의 값일 시, 새해 이스터에그 수행.
