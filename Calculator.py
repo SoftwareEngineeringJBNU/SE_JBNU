@@ -1,7 +1,7 @@
 import EasterEgg
 
 class Calculator():
-    operator_dic = {"+" : "plus", "-" : "minus", "*" : "multiply"} #연산자 Dictionary
+    operator_dic = None #연산자 Dictionary
 
     selected_operator = None #선택된 연산자종류
     prev_input = None #이전값
@@ -11,6 +11,7 @@ class Calculator():
     error_state = None
 
     def __init__(self):
+        self.operator_dic = {"plus" : "+", "minus" : "-", "multiply" : "*"} #연산자 Dictionary
         self.error_state = False
         self.is_calculate_done = False
         self.result = 0
@@ -56,10 +57,10 @@ class Calculator():
 
         # TODO : prev_input이 정수라면, current_input은 연산자여야 함. 또한, prev_input이 연산자라면 current_input은 정수여야 함.
         try:
-            float(self.prev_input)
+            float(self.current_input) #현재 입력이 숫자인지 확인
         except ValueError: #입력된 문자열이 숫자로 형변환이 불가능한 경우(문자일 경우)
             if self.prev_input in self.operator_dic: # prev_input이 연산자인데
-                if not float(self.prev_input).is_integer() : # current_input이 정수가 아니라면
+                if not float(self.prev_input).is_integer() : # prev_input이 정수가 아니라면
                     self.error_state = True
 
                 # TODO : current_input이 연산자라면, selected_operator가 None이거나(초기 상태) selected_operator와 같아야 함.
@@ -70,8 +71,8 @@ class Calculator():
                 self.error_state = True
         else: #입력된 문자열이 숫자로 형변환이 가능한 경우
             # TODO : current_input이 숫자라면, 반드시 정수여야 함.
-            if float(self.prev_input).is_integer(): # prev_input이 정수인데
-                if not self.current_input in self.operator_dic: # current_input이 연산자가 아닐 경우
+            if float(self.current_input).is_integer(): # prev_input이 정수인데
+                if self.prev_input in self.operator_dic: # current_input이 연산자가 아닐 경우
                     self.error_state = True
             else: # prev_input이 정수도, 연산자도 아닌 경우
                 self.error_state = True
