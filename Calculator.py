@@ -16,7 +16,6 @@ class Calculator():
         self.is_calculate_done = False
         self.result = 0
         self.prev_input = self.operator_dic["plus"] # 초기 current_input과의 충돌을 방지하기 위한 초기화 값. 의미 없는 값이므로 혼동하지 말 것.
-        pass
 
     def printError(self):
         print("ERROR!")
@@ -28,10 +27,8 @@ class Calculator():
         
     def subtractNumber(self):
         self.result -= int(self.current_input)
-        pass
     def multiplyNumber(self):
         self.result *= int(self.current_input)
-        pass
 
     def calculate(self):
         # TODO : 입력된 연산자가 존재해야만 아래의 계산이 수행되어야 함. 조건문으로 처리 해줄 것.
