@@ -57,7 +57,9 @@ class Calculator():
             float(self.current_input) #현재 입력이 숫자인지 확인
         except ValueError: #입력된 문자열이 숫자로 형변환이 불가능한 경우(문자일 경우)
             if self.current_input in self.operator_dic.values(): # current_input이 연산자인데
-                if not float(self.prev_input).is_integer() : # prev_input이 정수가 아니라면
+                if self.prev_input in self.operator_dic.values():
+                    self.error_state = True
+                elif not float(self.prev_input).is_integer() : # prev_input이 정수가 아니라면
                     self.error_state = True
 
                 # TODO : current_input이 연산자라면, selected_operator가 None이거나(초기 상태) selected_operator와 같아야 함.
@@ -68,8 +70,8 @@ class Calculator():
                 self.error_state = True
         else: #입력된 문자열이 숫자로 형변환이 가능한 경우
             # TODO : current_input이 숫자라면, 반드시 정수여야 함.
-            if float(self.current_input).is_integer(): # prev_input이 정수인데
-                if self.prev_input in self.operator_dic: # current_input이 연산자가 아닐 경우
+            if float(self.current_input).is_integer(): # current_input 이 정수인데
+                if self.prev_input not in self.operator_dic.values(): # prev_input이 연산자가 아닐 경우
                     self.error_state = True
                 if self.selected_operator is None:
                     self.result = int(self.current_input)  # 처음 숫자가 입력될 때, result을 current_input 바꿔준다.
