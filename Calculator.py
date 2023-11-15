@@ -32,7 +32,7 @@ class Calculator():
         # TODO : 조건문에서 현재 연산자와 +, -, * 비교 후, 각 조건문에서 함수 처리.
         # TODO : 연산값을 결과 값에 넣어주어야 함.
         if self.current_input:
-            if self.selected_operator == '*':
+            if self.selected_operator == self.operator_dic["multiply"]:
                 self.multiplyNumber()
         pass
 
