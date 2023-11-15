@@ -1,7 +1,9 @@
 import winsound
 import time
+from datetime import datetime, timedelta
 
-EASTEREGG_TRIGGER_Chirstmas = 1225 # 이스터에그가 발생하는 조건 값(숫자여야함)
+# 크리스마스 이스터에그
+EASTEREGG_TRIGGER_CHRISTMAS = "1225" # 이스터에그가 발생하는 조건 값(숫자여야함)
 
 # 음계와 박자를 정의합니다.
 # 높은 음은 더 큰 숫자로, 음의 길이는 더 작은 숫자로 나타냅니다.
@@ -88,4 +90,18 @@ def easterEgg_chirstmas():
     bridge = height - 2
     print(" " * bridge + "|||")
 
-# easterEgg_chirstmas()
+
+# 새해 이스터애그
+
+def easterEgg_newYear():
+    current_datetime = datetime.now()
+
+    EASTEREGG_TRIGGER_NEWYEAR = (current_datetime + timedelta(days=365)).strftime("%Y")
+
+    newyear_datetime = datetime(int(EASTEREGG_TRIGGER_NEWYEAR), 1, 1)
+
+    remaining_time = newyear_datetime - current_datetime
+
+    print(f"remaining days until 2024 : D-{remaining_time.days + 1}")
+
+easterEgg_newYear()
