@@ -38,24 +38,28 @@ class Calculator():
 
         # TODO : 해당 로직 내에서, 에러가 발생했다면, error_state를 True로 설정하여라.
 
-        if isinstance(self.prev_input, int): # prev_input이 정수인데
-            if not self.current_input in self.operator_dic: # current_input이 연산자가 아닐 경우
-                self.error_state = True
-            else : # current_input이 연산자일 때..
-                if self.selected_operator is not None and self.current_input != self.selected_operator:
-                    # None이 아닐 때, 현재 연산자와 이전 연산자가 다르다면 에러.
+        # TODO : prev_input이 정수라면, current_input은 연산자여야 함. 또한, prev_input이 연산자라면 current_input은 정수여야 함.
+        try:
+            float(self.prev_input)
+        except ValueError: #입력된 문자열이 숫자로 형변환이 불가능한 경우(문자일 경우)
+            if self.prev_input in self.operator_dic: # prev_input이 연산자인데
+                if not float(self.prev_input).is_integer() : # current_input이 정수가 아니라면
                     self.error_state = True
 
-        elif self.prev_input in self.operator_dic: # prev_input이 연산자인데
-            if not isinstance(self.current_input, int) : # current_input이 정수가 아니라면
+                # TODO : current_input이 연산자라면, selected_operator가 None이거나(초기 상태) selected_operator와 같아야 함.
+                if self.selected_operator is not None and self.current_input != self.selected_operator:
+                        # None이 아닐 때, 현재 연산자와 이전 연산자가 다르다면 에러.
+                        self.error_state = True
+            else: # prev_input이 정수도, 연산자도 아닌 경우
                 self.error_state = True
-        else: # prev_input이 정수도, 연산자도 아닌 경우
-            self.error_state = True
-
-        # TODO : prev_input이 정수라면, current_input은 연산자여야 함. 또한, prev_input이 연산자라면 current_input은 정수여야 함.
-        # TODO : current_input이 숫자라면, 반드시 정수여야 함.
-        # TODO : current_input이 연산자라면, selected_operator가 None이거나(초기 상태) selected_operator와 같아야 함.
-
+        else: #입력된 문자열이 숫자로 형변환이 가능한 경우
+            # TODO : current_input이 숫자라면, 반드시 정수여야 함.
+            if float(self.prev_input).is_integer(): # prev_input이 정수인데
+                if not self.current_input in self.operator_dic: # current_input이 연산자가 아닐 경우
+                    self.error_state = True
+            else: # prev_input이 정수도, 연산자도 아닌 경우
+                self.error_state = True
+        
         # TODO : edge케이스가 있다면 추가작성요망.
 
         if self.error_state:
