@@ -80,8 +80,13 @@ class Calculator():
         while True:
             self.current_input = input()
 
-            if self.current_input == EasterEgg.EASTEREGG_TRIGGER: # 이스터에그의 값일 시, 이스터에그 수행.
-                EasterEgg.easterEgg() # 수행될 이스터에그
+            if self.current_input == EasterEgg.EASTEREGG_TRIGGER_CHRISTMAS:  # 크리스마스 이스터에그의 값일 시, 크리스마스이스터에그 수행.
+                EasterEgg.easterEgg()  # EasterEgg.py의 크리스마스 이스터에그함수 실행
+                return
+
+            if self.current_input == EasterEgg.NewYear_calculator():  # 새해 이스터에그의 값일 시, 새해 이스터에그 수행.
+                EasterEgg.easterEgg_NewYear()  # EasterEgg.py의 새해 이스터에그 실행
+                return
 
             self.errorCheck() # 에러체크
             self.prev_input = self.current_input # errorCheck를 위한 prev_input 계승
