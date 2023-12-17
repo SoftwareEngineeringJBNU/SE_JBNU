@@ -18,7 +18,7 @@ class Calculator():
         self.prev_input = self.operator_dic["plus"] # 초기 current_input과의 충돌을 방지하기 위한 초기화 값. 의미 없는 값이므로 혼동하지 말 것.
 
     def printError(self):
-        print("ERROR!")
+        print("[SYSTEM] ERROR!")
         exit(0)
 
     # TODO : result와 이전 값의 연산
@@ -86,6 +86,10 @@ class Calculator():
 
             if self.current_input == EasterEgg.NewYear_calculator():  # 새해 이스터에그의 값일 시, 새해 이스터에그 수행.
                 EasterEgg.easterEgg_NewYear()  # EasterEgg.py의 새해 이스터에그 실행
+                return
+
+            if self.current_input == EasterEgg.EASTEREGG_TRIGGER_FOUNDATION:
+                EasterEgg.foundationDayJBNU()
                 return
 
             if self.current_input == "=":
