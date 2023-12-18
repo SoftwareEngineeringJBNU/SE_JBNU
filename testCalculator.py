@@ -70,7 +70,7 @@ class TestSubFunc(unittest.TestCase):
         #음수에서 뺄셈, 현재값 15
         self.calculator.current_input = '100'
         self.calculator.subtractNumber() # -15 - 100 = -115 인지 test
-        self.assertEqual(self.calculator.result, -115);
+        self.assertEqual(self.calculator.result, -115)
 
         #양수에서 뺄셈,
         self.calculator.result = 1111
@@ -154,6 +154,10 @@ class TestMulFunc(unittest.TestCase):
         self.calculator.current_input = '0'
         self.calculator.multiplyNumber()
         self.assertEqual(self.calculator.result, 0) # 1000 * 99 = 99000
+
+class TestFacFunc(unittest.TestCase):
+    def setUp(self):
+        self.calculator = Calculator()
 
 if __name__ == 'main':
     unittest.main()
