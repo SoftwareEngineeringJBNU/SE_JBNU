@@ -172,7 +172,12 @@ class TestFacFunc(unittest.TestCase):
         self.calculator.errorCheck()
         self.calculator.factorialNumber()
         self.assertEqual(self.calculator.result, self.error_continuous_number)
-    def GeneralInput(self):
+        
+    def testGeneralInput(self):
+        self.calculator.prev_input = '0'
+        self.calculator.factorialNumber()
+        self.assertEqual(self.calculator.result, 1)
+
         self.calculator.prev_input = '5'
         self.calculator.factorialNumber()
         self.assertEqual(self.calculator.result, 120)

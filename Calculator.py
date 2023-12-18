@@ -1,4 +1,5 @@
 import EasterEgg
+import math
 
 class Calculator():
     operator_dic = None #연산자 Dictionary
@@ -11,7 +12,7 @@ class Calculator():
     error_state = None
 
     def __init__(self):
-        self.operator_dic = {"plus" : "+", "minus" : "-", "multiply" : "*"} #연산자 Dictionary
+        self.operator_dic = {"plus" : "+", "minus" : "-", "multiply" : "*", "factorial" : "!"} #연산자 Dictionary
         self.error_state = False
         self.is_calculate_done = False
         self.result = 0
@@ -32,7 +33,15 @@ class Calculator():
 
     def factorialNumber(self):
         # TODO : factorial
-        pass
+        if int(self.prev_input) < 0:
+            self.result = "[ERROR] Out Of Range"
+        elif self.error_state:
+            self.result = "[ERROR] Input Error"
+        else:
+            self.result = math.factorial(int(self.prev_input))
+            print("= ", end='')
+        
+        print(self.result)
 
     def calculate(self):
         # TODO : 입력된 연산자가 존재해야만 아래의 계산이 수행되어야 함. 조건문으로 처리 해줄 것.
@@ -45,6 +54,9 @@ class Calculator():
                 self.subtractNumber()
             elif self.selected_operator == self.operator_dic["multiply"]:
                 self.multiplyNumber()
+            elif self.selected_operator == self.operator_dic["factorial"]:
+                self.factorialNumber()
+                exit(0)
             else:
                 self.printError()
 
@@ -99,9 +111,15 @@ class Calculator():
                     return
 
             self.errorCheck() # 에러체크
-            self.prev_input = self.current_input # errorCheck를 위한 prev_input 계승
+
+            #self.prev_input = self.current_input # errorCheck를 위한 prev_input 계승
 
             if self.current_input not in self.operator_dic.values(): # 숫자 입력시
                 self.calculate()
+            elif self.current_input == self.operator_dic["factorial"]:
+                self.selected_operator = self.current_input
+                self.calculate()
             else: # 연산자 입력시
                 self.selected_operator = self.current_input
+
+            self.prev_input = self.current_input # errorCheck를 위한 prev_input 계승

@@ -1,5 +1,5 @@
 from Calculator import Calculator
-from testCalculator import TestAddFunc, TestSubFunc, TestMulFunc
+from testCalculator import TestAddFunc, TestSubFunc, TestMulFunc, TestFacFunc
 import unittest
 
 if __name__ == '__main__':
