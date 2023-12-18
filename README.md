@@ -1,4 +1,4 @@
-# WebProgramming
+# Software Engineering
 [전북대학교 소프트웨어 공학] 팀 프로젝트
 
 <br>
