@@ -30,6 +30,10 @@ class Calculator():
     def multiplyNumber(self):
         self.result *= int(self.current_input)
 
+    def factorialNumber(self):
+        # TODO : factorial
+        pass
+
     def calculate(self):
         # TODO : 입력된 연산자가 존재해야만 아래의 계산이 수행되어야 함. 조건문으로 처리 해줄 것.
         # TODO : 조건문에서 현재 연산자와 +, -, * 비교 후, 각 조건문에서 함수 처리.
@@ -74,8 +78,6 @@ class Calculator():
         
         # TODO : edge케이스가 있다면 추가작성요망.
 
-        if self.error_state:
-            self.printError()
     def calculate_Start(self):
         while True:
             self.current_input = input()
@@ -89,6 +91,10 @@ class Calculator():
                 return
 
             if self.current_input == "=":
+                if self.error_state:
+                    self.printError()
+                    return
+                else :
                     print(self.result) # 결과 값 출력 후 종료
                     return
 

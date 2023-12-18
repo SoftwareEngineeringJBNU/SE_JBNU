@@ -158,6 +158,32 @@ class TestMulFunc(unittest.TestCase):
 class TestFacFunc(unittest.TestCase):
     def setUp(self):
         self.calculator = Calculator()
+        self.error_negative_number = "[ERROR] Out Of Range"
+        self.error_continuous_number = "[ERROR] Input Error"
+
+    def testNegativeNumber(self):
+        self.calculator.prev_input = '-444'
+        self.calculator.factorialNumber()
+        self.assertEqual(self.calculator.result, self.error_negative_number)
+
+    def testContinuousNumber(self):
+        self.calculator.prev_input = '3'
+        self.calculator.current_input = '5'
+        self.calculator.errorCheck()
+        self.calculator.factorialNumber()
+        self.assertEqual(self.calculator.result, self.error_continuous_number)
+    def GeneralInput(self):
+        self.calculator.prev_input = '5'
+        self.calculator.factorialNumber()
+        self.assertEqual(self.calculator.result, 120)
+
+        self.calculator.prev_input = '10'
+        self.calculator.factorialNumber()
+        self.assertEqual(self.calculator.result, 3628800)
+
+        self.calculator.prev_input = '100'
+        self.calculator.factorialNumber()
+        self.assertEqual(self.calculator.result, 93326215443944152681699238856266700490715968264381621468592963895217599993229915608941463976156518286253697920827223758251185210916864000000000000000000000000)
 
 if __name__ == 'main':
     unittest.main()
