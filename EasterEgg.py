@@ -4,7 +4,7 @@ from datetime import datetime, timedelta
 
 # 크리스마스 이스터에그
 EASTEREGG_TRIGGER_CHRISTMAS = "1225" # 이스터에그가 발생하는 조건 값(숫자여야함)
-
+EASTEREGG_TRIGGER_FOUNDATION = "1015" # 전북대학교 개교기념일 이스터에그
 # 음계와 박자를 정의합니다.
 # 높은 음은 더 큰 숫자로, 음의 길이는 더 작은 숫자로 나타냅니다.
 notes = {
@@ -80,6 +80,8 @@ jingle_bells = [
 def easterEgg_Chirstmas():
     height = 10
 
+
+    print("[EVENT] \"Christmas Tree Print\"")
     for i in range(1, height + 1):
         space = height - i
         star = 2 * i - 1
@@ -105,4 +107,8 @@ def easterEgg_NewYear():
 
     remaining_time = newyear_datetime - current_datetime
 
-    print(f"remaining days until 2024 : D-{remaining_time.days + 1}")
+    print(f"[EVENT] \"remaining days until 2024 : D-{remaining_time.days + 1}\"")
+
+def foundationDayJBNU():
+    result = "[EVENT] 전북대 개교기념일입니다."
+    print(result)
